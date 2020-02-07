@@ -1,0 +1,229 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dependencies &#8212; Diamo Frappe  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Server Setup" href="server_setup.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="dependencies">
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="git">
+<h2>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <a class="reference external" href="https://git-scm.com/">Git</a></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install git
+</pre></div>
+</div>
+<p>Check whether <em>git</em> has been installed correctly</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git --version
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <a class="reference external" href="https://www.python.org/">Python</a></li>
+</ul>
+<div class="section" id="v2-7">
+<h3>v2.7<a class="headerlink" href="#v2-7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install python-dev
+</pre></div>
+</div>
+<ul class="simple">
+<li>Install <strong>setuptools</strong> and <strong>pip</strong> (Python’s Package Manager):</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install python-setuptools python-pip
+</pre></div>
+</div>
+</div>
+<div class="section" id="v3-x">
+<h3>v3.x<a class="headerlink" href="#v3-x" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install python3-dev
+</pre></div>
+</div>
+<ul class="simple">
+<li>Install <strong>setuptools</strong> and <strong>pip</strong> (Python’s Package Manager):</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> apt-get install python3-setuptools python3-pip
+</pre></div>
+</div>
+<ul class="simple">
+<li>You can also create an alias for pip and python to enforce use of python 3:</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">alias python=python3</span>
+<span class="go">alias pip=pip3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mariadb">
+<h2>MariaDB<a class="headerlink" href="#mariadb" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <a class="reference external" href="https://mariadb.org/">MariaDB</a></li>
+</ul>
+<p>To install MariaDB 10.3 stable package on your Linux OS, simply:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install software-properties-common
+<span class="gp">$</span> sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+<span class="gp">$</span> sudo add-apt-repository <span class="s1">&#39;deb [arch=amd64,i386,ppc64el] http://ftp.ubuntu-tw.org/mirror/mariadb/repo/10.3/ubuntu xenial main&#39;</span>
+
+<span class="gp">$</span> sudo apt-get update
+<span class="gp">$</span> sudo apt-get install mariadb-server-10.3
+</pre></div>
+</div>
+<p>During this installation you’ll be prompted to set the MySQL root password. If you are not prompted for the same, you’ll have to initialize the MySQL server setup yourself after the above command completes. You can initialize the MySQL server setup by executing the following command mysql_secure_installation. Remember: only run it if you’re not prompted the password during setup.</p>
+<p>It is really important that you remember this password, since it’ll be needed later on! Test whether the installation has worked with mysql -u root -p -h localhost. You should be prompted for the mysql root password you have provided during the installation. Get back out of the mysql console by typing q</p>
+<p>Next you’ll need the MySQL database development files</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install libmysqlclient-dev
+</pre></div>
+</div>
+<p>You also need to edit the mariadb configuration (although the guide in README doesn’t mention this, you’ll face an error message asking you to do exactly this if you follow the README. So you might as well go ahead and do this)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo nano /etc/mysql/my.cnf
+</pre></div>
+</div>
+<p>And add this to the file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[mysqld]</span>
+<span class="go">character-set-client-handshake = FALSE</span>
+<span class="go">character-set-server = utf8mb4</span>
+<span class="go">collation-server = utf8mb4_unicode_ci</span>
+
+<span class="go">[mysql]</span>
+<span class="go">default-character-set = utf8mb4</span>
+</pre></div>
+</div>
+<p>(Now press (Ctrl-X) to exit!) Finally restart the mysql server and you’ll be good to go!</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo service mysql restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <a class="reference external" href="https://redis.io/">Redis</a></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install redis-server
+</pre></div>
+</div>
+</div>
+<div class="section" id="node-js-10-x-and-yarn">
+<h2>Node.js 10.x and Yarn<a class="headerlink" href="#node-js-10-x-and-yarn" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install curl
+<span class="gp">$</span> curl -sL https://deb.nodesource.com/setup_10.x <span class="p">|</span> sudo -E bash -
+<span class="gp">$</span> sudo apt-get install -y nodejs
+
+<span class="gp">$</span> sudo npm install -g yarn
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/diamo.jpg" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../index.html">Diamo Frappe</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="server_setup.html">Server Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#git">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mariadb">MariaDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#redis">Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#node-js-10-x-and-yarn">Node.js 10.x and Yarn</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="server_setup.html" title="previous chapter">Server Setup</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Diamo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/server_setup/dependencies.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

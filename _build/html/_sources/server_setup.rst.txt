@@ -1,0 +1,6 @@
+Server Setup
+=================================
+
+Architecture
+-------------------------------------------------
+.. image:: images/architecture.png
